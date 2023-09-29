@@ -1,4 +1,4 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import {FontAwesome, Ionicons, MaterialIcons} from '@expo/vector-icons';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
@@ -23,31 +23,38 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="index"
+        name="StatusScreen"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+        title: 'Status',
+        tabBarIcon: ({ color }) => <TabBarIcon name="circle" color={color}/>
+      }}
+      /> 
+      <Tabs.Screen
+        name="CallScreen"
+        options={{
+        title: 'Calls',
+        tabBarIcon: ({ color }) => <TabBarIcon name="phone" color={color}/>
+      }}
+      /> 
+      <Tabs.Screen
+        name="HomeScreen"
+        options={{
+          title: 'Communities',
+          tabBarIcon: ({ color }) => <MaterialIcons name="groups" size={30} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="ChatScreen"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Chat',
+          tabBarIcon: ({ color }) => <Ionicons name="ios-chatbubbles-sharp" size={24} color={color}/>
+        }}
+      />
+      <Tabs.Screen
+        name="SettingsScreen"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color }) => <Ionicons name="ios-settings-outline" size={24} color={color} />
         }}
       />
     </Tabs>
